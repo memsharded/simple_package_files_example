@@ -1,0 +1,11 @@
+project(PackageTest CXX)
+cmake_minimum_required(VERSION 2.8.12)
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY})
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY})
+
+include_directories(inc)
+add_library(hello src/hello.cpp)
+
+
