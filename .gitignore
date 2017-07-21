@@ -102,3 +102,6 @@ ENV/
 
 build/
 bin/
+conanbuildinfo.txt
+conaninfo.txt
+pkg/

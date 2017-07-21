@@ -11,7 +11,16 @@ os.system('cd hello_lib && mkdir build && cd build && '
           'cmake .. -G "Visual Studio 14 Win64" && '
           'cmake --build . --config Release')
 
+try:
+    shutil.rmtree("pkg")
+except:
+    pass
+os.makedirs("pkg") # prepare an empty folder, for clean pacakge
 
+
+# Conan commands
 os.system("conan export user/testing")
-os.system("conan package_files Hello/0.1@user/testing --package_folder=hello_lib -f")
+os.system("cd hello_lib && conan install ..")
+os.system("cd pkg && conan package .. --build_folder=../hello_lib") # This will improve with a CWD argument in future release
+os.system("conan package_files Hello/0.1@user/testing --package_folder=pkg -f")
 os.system("conan upload Hello/0.1@user/testing -r=artifactory --all")
